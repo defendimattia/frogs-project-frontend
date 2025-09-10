@@ -33,7 +33,12 @@ export default function Navbar() {
                             <NavLink to="/habitats" className={({ isActive }) => `nav-link ${styles.link} ${isActive ? `${styles.active}` : ""}`}>Habitats</NavLink>
                         </li>
 
-                        <li className="nav-item mx-5"><NavLink to="/conservationStatuses" className={({ isActive }) => `nav-link ${styles.link} ${isActive ? `${styles.active}` : ""}`}>Stati di Conservazione</NavLink>
+                        <li className="nav-item mx-5">
+                            <NavLink to="/conservationStatuses" className={({ isActive }) => `nav-link ${styles.link} ${isActive ? `${styles.active}` : ""}`}>Stati di Conservazione</NavLink>
+                        </li>
+
+                        <li className="nav-item mx-5">
+                            <NavLink to="/aboutus" className={({ isActive }) => `nav-link ${styles.link} ${isActive ? `${styles.active}` : ""}`}>Chi siamo</NavLink>
                         </li>
                     </ul>
 

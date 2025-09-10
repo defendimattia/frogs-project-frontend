@@ -6,6 +6,7 @@ import HabitatsPage from "./pages/HabitatsPage"
 import HabitatDetailsPage from "./pages/HabitatDetailsPage"
 import ConservationStatusesPage from "./pages/ConservationStatusesPage"
 import ConservationStatusDetailsPage from "./pages/ConservationStatusDetailsPage"
+import AboutUs from "./pages/AboutUs"
 import NotFound from "./pages/NotFound"
 import DefaultLayout from "./layouts/DefaultLayout"
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/habitats/:id" element={<HabitatDetailsPage />} />
             <Route path="/conservationStatuses" element={<ConservationStatusesPage />} />
             <Route path="/conservationStatuses/:id" element={<ConservationStatusDetailsPage />} />
+            <Route path="/aboutus" element={<AboutUs />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
