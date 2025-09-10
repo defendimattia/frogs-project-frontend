@@ -1,0 +1,38 @@
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.social a {
+    margin: 0 0.5rem;
+    color: #ffffff;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: #4CAF50;
+}
+
+.copy {
+    opacity: 0.8;
+}
+
+@media(min-width: 768px) {
+    .footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .social {
+        margin-bottom: 0;
+    }
+}
