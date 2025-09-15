@@ -99,7 +99,7 @@ export default function FrogDetail() {
                         </li>
                         <li className={`list-group-item ${styles.detailItem}`}>
                             <span className={styles.detailLabel}>Tossicità:</span>
-                            <span className={styles.detailValue}>{frog.toxicity ? "Sì" : "No"}</span>
+                            <span className={styles.detailValue}>{frog.toxicity != null ? (frog.toxicity ? "Tossica" : "Non tossica") : "Sconosciuta"}</span>
                         </li>
                     </ul>
 
