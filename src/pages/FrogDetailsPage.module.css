@@ -1,0 +1,56 @@
+.scientificName {
+    color: #555;
+}
+
+.frogImage {
+    max-height: 350px;
+    object-fit: contain;
+    background-color: #fff;
+}
+
+.description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #eee;
+}
+
+.habitatList .habitatItem {
+    transition: background-color 0.2s ease, border-left-color 0.2s ease;
+    border-left: 4px solid #e0e0e0;
+}
+
+.habitatList .habitatItem:hover {
+    background-color: #f6fff8;
+    border-left-color: #4CAF50;
+}
+
+.detailsList {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.detailItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #4CAF50;
+    padding: 0.75rem 1rem;
+}
+
+.detailLabel {
+    font-weight: 600;
+    color: #333;
+}
+
+.detailValue {
+    color: #555;
+    font-style: italic;
+}
+
+.conservationBox {
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+}
