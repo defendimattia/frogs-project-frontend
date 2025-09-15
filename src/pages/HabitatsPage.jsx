@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "./HabitatsPage.module.css";
 
 export default function Habitats() {
     const navigate = useNavigate();
@@ -9,10 +10,11 @@ export default function Habitats() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/habitats").then(response => {
-            setHabitats(response.data);
-            setLoading(false);
-        })
+        axios.get("http://localhost:8080/api/habitats")
+            .then(response => {
+                setHabitats(response.data);
+                setLoading(false);
+            })
             .catch(err => {
                 console.error("Errore nel caricamento degli habitat:", err);
                 setError("Errore nel caricamento degli habitat.");
@@ -47,7 +49,7 @@ export default function Habitats() {
             <div className="row">
                 {habitats.map(habitat => (
                     <div key={habitat.id} className="col-12 col-md-6 col-lg-4 mb-4">
-                        <div className="card h-100 shadow-sm">
+                        <div className={`${styles.cardCustom} p-2`}>
                             <div className="card-body d-flex flex-column">
                                 <h5 className="card-title green-color-txt">{habitat.name}</h5>
                                 <p className="card-text">{habitat.description}</p>
