@@ -34,7 +34,7 @@ export default function HabitatDetail() {
     }, [id]);
 
     const goToFrogDetails = (frogId) => {
-        navigate(`/frog/${frogId}`);
+        navigate(`/frogs/${frogId}`);
     };
 
     if (loading) {
