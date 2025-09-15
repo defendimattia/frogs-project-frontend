@@ -17,6 +17,19 @@
     font-size: 1rem;
 }
 
+.cardCustom {
+    background-color: #f9f9f9;
+    border: 2px solid #d4edda;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardCustom:hover {
+    border-color: #4CAF50;
+}
+
 .iucnLC {
     background-color: green;
 }

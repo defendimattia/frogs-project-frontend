@@ -12,7 +12,6 @@ export default function ConservationStatuses() {
     useEffect(() => {
         axios.get("http://localhost:8080/api/conservationStatuses")
             .then(response => {
-                console.log(response.data);
                 setStatuses(response.data);
                 setLoading(false);
             })
@@ -44,7 +43,6 @@ export default function ConservationStatuses() {
         }
     };
 
-
     if (loading) {
         return (
             <div className="container my-5 text-center">
@@ -68,7 +66,7 @@ export default function ConservationStatuses() {
             <div className="row">
                 {statuses.map(status => (
                     <div key={status.id} className="col-12 col-md-6 col-lg-4 mb-4">
-                        <div className="card h-100 shadow-sm">
+                        <div className={`${styles.cardCustom} p-2`}>
                             <div className="card-body d-flex flex-column">
                                 <h5 className="card-title d-flex align-items-center">
                                     <span className={`${styles.iucnBadge} ${getIUCNClass(status.iucnCode)}`}>
