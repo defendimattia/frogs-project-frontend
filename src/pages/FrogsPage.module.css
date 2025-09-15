@@ -1,0 +1,27 @@
+.frogCard {
+    background-color: #f9f9f9;
+    font-size: 0.85rem;
+    border: 2px solid #d4edda;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.frogCard:hover {
+    border-color: #4CAF50;
+}
+
+.frogImageWrapper {
+    height: 150px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frogImage {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
