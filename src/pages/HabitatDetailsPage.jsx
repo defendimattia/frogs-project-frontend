@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "./HabitatDetailsPage.module.css"
 
 export default function HabitatDetail() {
     const { id } = useParams();
@@ -60,9 +61,9 @@ export default function HabitatDetail() {
 
             <h3 className="green-color-txt mb-3">Rane presenti in questo habitat</h3>
             {frogs.length > 0 ? (
-                <ul className="list-group list-group-flush">
+                <ul className={`list-group list-group-flush ${styles.frogsList}`}>
                     {frogs.map(frog => (
-                        <li key={frog.id} className="list-group-item d-flex justify-content-between align-items-center">
+                        <li key={frog.id} className={`list-group-item d-flex justify-content-between align-items-center ${styles.frogsItem}`}>
                             {frog.commonName} ({frog.scientificName})
                             <button className="btn btn-sm btn-success green-color-bg" onClick={() => goToFrogDetails(frog.id)}>Dettagli</button>
                         </li>

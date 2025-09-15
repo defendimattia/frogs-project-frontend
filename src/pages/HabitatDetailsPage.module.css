@@ -1,0 +1,9 @@
+.frogsList .frogsItem {
+    transition: background-color 0.2s ease, border-left-color 0.2s ease;
+    border-left: 4px solid #e0e0e0;
+}
+
+.frogsList .frogsItem:hover {
+    background-color: #f6fff8;
+    border-left-color: #4CAF50;
+}
