@@ -35,7 +35,7 @@ export default function ConservationStatusDetail() {
     }, [id]);
 
     function goToFrogDetails(frogId) {
-        navigate(`/frog/${frogId}`);
+        navigate(`/frogs/${frogId}`);
     }
 
     function getRiskClass(level, index) {
@@ -101,9 +101,9 @@ export default function ConservationStatusDetail() {
 
             <h3 className="green-color-txt mb-3">Rane con questo stato di conservazione</h3>
             {frogs.length > 0 ? (
-                <ul className="list-group list-group-flush">
+                <ul className={`list-group list-group-flush ${styles.frogsList}`}>
                     {frogs.map(frog => (
-                        <li key={frog.id} className="list-group-item d-flex justify-content-between align-items-center">
+                        <li key={frog.id} className={`list-group-item d-flex justify-content-between align-items-center ${styles.frogsItem}`}>
                             {frog.commonName} ({frog.scientificName})
                             <button className="btn btn-sm btn-success green-color-bg" onClick={() => goToFrogDetails(frog.id)}>Dettagli</button>
                         </li>
