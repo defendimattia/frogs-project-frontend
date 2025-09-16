@@ -8,6 +8,7 @@ export default function Frogs() {
     const [frogs, setFrogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         axios.get("http://localhost:8080/api/frogs")
@@ -25,6 +26,18 @@ export default function Frogs() {
     const goToDetails = (id) => {
         navigate(`/frogs/${id}`);
     };
+
+    function fetchFrogs(query = "") {
+        const url = query ? `http://localhost:8080/api/frogs/search?query=${query}` : "http://localhost:8080/api/frogs";
+        axios.get(url).then(function (response) {
+            setFrogs(response.data);
+        });
+    }
+
+    function handleSearchSubmit(e) {
+        e.preventDefault();
+        fetchFrogs(searchQuery);
+    }
 
     if (loading) {
         return (
@@ -46,6 +59,13 @@ export default function Frogs() {
         <div className="container my-5">
             <h1 className="display-5 green-color-txt text-center mb-4">Le Rane</h1>
 
+
+            {/* barra di ricerca */}
+            <form className="mb-4 d-flex justify-content-center" onSubmit={handleSearchSubmit}>
+                <input type="text" className="form-control w-50 me-2" placeholder="Cerca per nome comune o nome scientifico..." value={searchQuery} onChange={function (e) { setSearchQuery(e.target.value); }} />
+                <button type="submit" className="btn btn-success green-color-bg">Cerca</button>
+            </form>
+
             <div className="row g-3">
                 {frogs.map(frog => (
                     <div key={frog.id} className="col-6 col-md-4 col-lg-3">
@@ -54,7 +74,7 @@ export default function Frogs() {
                             <div className={styles.frogImageWrapper}>
                                 <img src={frog.imageUrl} alt={frog.commonName} className={styles.frogImage} />
                             </div>
-                            
+
                             <div className="d-flex flex-column flex-grow-1">
                                 <h6 className="mb-1 green-color-txt">{frog.commonName}</h6>
                                 <p className="text-muted fst-italic small mb-2">
