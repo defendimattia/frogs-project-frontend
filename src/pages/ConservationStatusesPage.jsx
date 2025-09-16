@@ -72,7 +72,7 @@ export default function ConservationStatuses() {
                                     <span className={`${styles.iucnBadge} ${getIUCNClass(status.iucnCode)}`}>
                                         {status.iucnCode}
                                     </span>
-                                    <span>{status.type}</span>
+                                    <span className="ms-1">{status.type}</span>
                                 </h5>
                                 <p className="card-text">{status.description}</p>
                                 <button className="btn btn-success green-color-bg mt-auto" onClick={() => goToDetails(status.id)}>Vai ai dettagli</button>
