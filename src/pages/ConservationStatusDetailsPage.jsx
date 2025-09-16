@@ -94,7 +94,7 @@ export default function ConservationStatusDetail() {
                         Consulta il sito ufficiale IUCN per maggiori informazioni sugli stati di conservazione delle specie.
                     </p>
 
-                    <a href="https://www.iucn.it/index.php" target="_blank" rel="noopener noreferrer" className="btn btn-success green-color-bg">Visita il sito IUCN</a>
+                    <a href="https://www.iucn.it/index.php" target="_blank" rel="noopener noreferrer" className="btn btn-success green-color-bg">Visita il sito ufficiale IUCN</a>
 
                 </div>
             </div>

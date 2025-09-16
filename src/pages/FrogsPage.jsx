@@ -89,6 +89,13 @@ export default function Frogs() {
         fetchFrogs(searchQuery);
     }
 
+    function resetFilters() {
+        setSearchQuery("");
+        setSelectedHabitat("");
+        setSelectedStatus("");
+        fetchFrogs();
+    }
+
     if (loading) {
         return (
             <div className="container my-5 text-center">
@@ -145,6 +152,12 @@ export default function Frogs() {
                             {statuses.map(status => <option key={status.id} value={status.id}>{status.type}</option>)}
                         </select>
                     </div>
+
+                    {/* bottone reset */}
+                    <div className="mt-3 text-center">
+                        <button type="button" className="btn btn-success green-color-bg" onClick={resetFilters}>Azzera ricerca</button>
+                    </div>
+
                 </div>
             )}
 
