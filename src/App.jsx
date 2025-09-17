@@ -16,6 +16,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<Homepage />} />
             <Route path="/frogs" element={<FrogsPage />} />
@@ -28,6 +29,7 @@ function App() {
           </Route>
 
           <Route path="*" element={<NotFound />} />
+          
         </Routes>
       </BrowserRouter>
 

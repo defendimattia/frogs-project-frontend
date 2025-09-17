@@ -26,7 +26,7 @@ export default function ConservationStatuses() {
         navigate(`/conservationStatuses/${id}`);
     };
 
-    const getIUCNClass = (code) => {
+    function getIUCNClass(code) {
         switch (code) {
             case "LC": return styles.iucnLC;
             case "NT": return styles.iucnNT;
@@ -61,6 +61,7 @@ export default function ConservationStatuses() {
 
     return (
         <div className="container my-5">
+            
             <h1 className="display-4 green-color-txt text-center mb-5">Stati di Conservazione delle Rane</h1>
 
             <div className="row">

@@ -22,6 +22,7 @@ export default function AboutUs() {
                     </p>
 
                     <h5 className="green-color-txt mt-4 mb-2">Cosa troverai su GreenFrog</h5>
+                    
                     <ul className="lead mb-3">
                         <li>Schede dettagliate sulle varie specie di rane.</li>
                         <li>Informazioni sugli habitat e sugli ambienti naturali.</li>

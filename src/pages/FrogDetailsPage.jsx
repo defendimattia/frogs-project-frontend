@@ -12,7 +12,7 @@ export default function FrogDetail() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        async function fetchData() {
             try {
                 const response = await axios.get(`http://localhost:8080/api/frogs/${id}`);
                 setFrog(response.data);
@@ -27,7 +27,7 @@ export default function FrogDetail() {
         fetchData();
     }, [id]);
 
-    const getIUCNClass = (code) => {
+    function getIUCNClass(code){
         switch (code) {
             case "LC": return consStyles.iucnLC;
             case "NT": return consStyles.iucnNT;
@@ -60,14 +60,6 @@ export default function FrogDetail() {
         );
     }
 
-    if (!frog) {
-        return (
-            <div className="container my-5 text-center">
-                <h2 className="text-danger">Rana non trovata.</h2>
-            </div>
-        );
-    }
-
     return (
         <div className="container my-5">
             <h1 className="display-4 text-center green-color-txt">
@@ -80,11 +72,7 @@ export default function FrogDetail() {
             <div className="row mb-4">
 
                 <div className="col-12 col-md-6 text-center mb-3">
-                    <img
-                        src={frog.imageUrl}
-                        alt={frog.commonName}
-                        className={`img-fluid rounded shadow-sm ${styles.frogImage}`}
-                    />
+                    <img src={frog.imageUrl} alt={frog.commonName} className={`img-fluid rounded shadow-sm ${styles.frogImage}`} />
                 </div>
 
                 <div className="col-12 col-md-6">

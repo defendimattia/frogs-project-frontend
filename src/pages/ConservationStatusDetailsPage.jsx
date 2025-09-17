@@ -12,7 +12,7 @@ export default function ConservationStatusDetail() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        async function fetchData() {
             try {
                 const statusResponse = await axios.get(`http://localhost:8080/api/conservationStatuses/${id}`);
                 setStatus(statusResponse.data);
@@ -38,11 +38,11 @@ export default function ConservationStatusDetail() {
         navigate(`/frogs/${frogId}`);
     }
 
-    function getRiskClass(level, index) {
-        if (index < level) {
-            if (level <= 2) return styles.riskGreen;
+    function getRiskClass(level, i) {
+        if (i < level) {
+            if (level === 1 || level === 2) return styles.riskGreen;
             if (level === 3 || level === 4) return styles.riskYellow;
-            return styles.riskRed;
+            if (level === 5) return styles.riskRed;
         }
         return "";
     }
