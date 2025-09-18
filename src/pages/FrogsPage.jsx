@@ -39,7 +39,12 @@ export default function Frogs() {
         axios.get("http://localhost:8080/api/conservationStatuses")
             .then(response => setStatuses(response.data))
             .catch(err => console.error("Errore nel caricamento degli stati di conservazione:", err));
+
     }, []);
+
+    useEffect(() => {
+        fetchFrogsWithFilters(0);
+    }, [selectedHabitat, selectedStatus]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -49,61 +54,53 @@ export default function Frogs() {
         navigate(`/frogs/${id}`);
     };
 
-    function fetchFrogs(query = "", pageNumber = 0) {
-        const url = query ? `http://localhost:8080/api/frogs/searchByName?query=${query}&page=${pageNumber}&size=12` : `http://localhost:8080/api/frogs?page=${pageNumber}&size=12`;
-        axios.get(url).then(function (response) {
-            setFrogs(response.data.content);
-            setTotalPages(response.data.totalPages);
-            setPage(response.data.number);
-        });
+    function fetchFrogsWithFilters(pageNumber = 0) {
+        let url = "";
+
+        if (searchQuery) {
+            url = `http://localhost:8080/api/frogs/searchByName?query=${searchQuery}&page=${pageNumber}&size=12`;
+        } else if (selectedHabitat) {
+            url = `http://localhost:8080/api/frogs/searchByHabitat/${selectedHabitat}?page=${pageNumber}&size=12`;
+        } else if (selectedStatus) {
+            url = `http://localhost:8080/api/frogs/searchByStatus/${selectedStatus}?page=${pageNumber}&size=12`;
+        } else {
+            url = `http://localhost:8080/api/frogs?page=${pageNumber}&size=12`;
+        }
+
+        axios.get(url)
+            .then(response => {
+                setFrogs(response.data.content);
+                setPage(response.data.number);
+                setTotalPages(response.data.totalPages);
+            })
+            .catch(err => console.error("Errore nel caricamento delle rane:", err));
     }
 
-    function handleHabitatChange(e) {
-        const habitatId = e.target.value;
-        setSelectedHabitat(habitatId);
 
+    function handleHabitatChange(e) {
+        setSelectedHabitat(e.target.value);
         setSearchQuery("");
         setSelectedStatus("");
-
-        if (habitatId === "") {
-            fetchFrogs("", 0);
-        } else {
-            axios.get(`http://localhost:8080/api/frogs/searchByHabitat/${habitatId}`)
-                .then(response => setFrogs(response.data.content))
-                .catch(err => console.error("Errore nel filtraggio rane:", err));
-        }
     }
 
     function handleStatusChange(e) {
-        const statusId = e.target.value;
-        setSelectedStatus(statusId);
-
+        setSelectedStatus(e.target.value);
         setSearchQuery("");
         setSelectedHabitat("");
-
-        if (statusId === "") {
-            fetchFrogs("", 0);
-        } else {
-            axios.get(`http://localhost:8080/api/frogs/searchByStatus/${statusId}`)
-                .then(response => setFrogs(response.data.content))
-                .catch(err => console.error("Errore nel filtraggio rane:", err));
-        }
     }
 
     function handleSearchSubmit(e) {
         e.preventDefault();
-
         setSelectedHabitat("");
         setSelectedStatus("");
-
-        fetchFrogs(searchQuery, 0);
+        fetchFrogsWithFilters(0);
     }
 
     function resetFilters() {
         setSearchQuery("");
         setSelectedHabitat("");
         setSelectedStatus("");
-        fetchFrogs();
+        fetchFrogsWithFilters(0);
     }
 
     if (loading) {
@@ -195,11 +192,11 @@ export default function Frogs() {
 
             {/* paginazione */}
             <div className="d-flex justify-content-center mt-4">
-                <button className="btn btn-sm btn-success green-color-bg me-2" disabled={page === 0} onClick={() => fetchFrogs(searchQuery, page - 1)}>⏴</button>
+                <button className="btn btn-sm btn-success green-color-bg me-2" disabled={page === 0} onClick={() => fetchFrogsWithFilters(page - 1)}>⏴</button>
 
                 <span className="align-self-center">Pagina {page + 1} di {totalPages}</span>
 
-                <button className="btn btn-sm btn-success green-color-bg ms-2" disabled={page + 1 >= totalPages} onClick={() => fetchFrogs(searchQuery, page + 1)}>⏵</button>
+                <button className="btn btn-sm btn-success green-color-bg ms-2" disabled={page + 1 >= totalPages} onClick={() => fetchFrogsWithFilters(page + 1)}>⏵</button>
             </div>
         </div>
     );
