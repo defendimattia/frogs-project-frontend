@@ -41,6 +41,10 @@ export default function Frogs() {
             .catch(err => console.error("Errore nel caricamento degli stati di conservazione:", err));
     }, []);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [page]);
+
     function goToDetails(id) {
         navigate(`/frogs/${id}`);
     };
@@ -51,7 +55,6 @@ export default function Frogs() {
             setFrogs(response.data.content);
             setTotalPages(response.data.totalPages);
             setPage(response.data.number);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
