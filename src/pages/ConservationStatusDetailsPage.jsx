@@ -18,7 +18,7 @@ export default function ConservationStatusDetail() {
                 setStatus(statusResponse.data);
 
                 const frogsResponse = await axios.get(`http://localhost:8080/api/frogs`);
-                const frogsInStatus = frogsResponse.data.filter(frog =>
+                const frogsInStatus = frogsResponse.data.content.filter(frog =>
                     frog.conservationStatus && frog.conservationStatus.id === statusResponse.data.id
                 );
                 setFrogs(frogsInStatus);

@@ -18,7 +18,7 @@ export default function HabitatDetail() {
                 setHabitat(habitatResponse.data);
 
                 const frogsResponse = await axios.get(`http://localhost:8080/api/frogs`);
-                const frogsInHabitat = frogsResponse.data.filter(frog =>
+                const frogsInHabitat = frogsResponse.data.content.filter(frog =>
                     frog.habitats && frog.habitats.some(h => h.id === habitatResponse.data.id)
                 );
                 setFrogs(frogsInHabitat);
